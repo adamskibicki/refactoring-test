@@ -60,11 +60,7 @@ namespace LegacyApp
                 Surname = surname
             };
 
-            var (hasCreditLimit, creditLimit) = _creditLimitCalculatorFactory.GetCalculator(client.Name)
-                .Calculate(user.Firstname, user.Surname, user.DateOfBirth);
-
-            user.CreditLimit = creditLimit;
-            user.HasCreditLimit = hasCreditLimit;
+            ApplyCreditLimit(client, user);
 
             if (!IsCreditLimitValid(user))
             {
@@ -74,6 +70,15 @@ namespace LegacyApp
             _userDataAccess.AddUser(user);
 
             return true;
+        }
+
+        private void ApplyCreditLimit(Client client, User user)
+        {
+            var (hasCreditLimit, creditLimit) = _creditLimitCalculatorFactory.GetCalculator(client.Name)
+                .Calculate(user.Firstname, user.Surname, user.DateOfBirth);
+
+            user.CreditLimit = creditLimit;
+            user.HasCreditLimit = hasCreditLimit;
         }
 
         private static bool IsCreditLimitValid(User user)

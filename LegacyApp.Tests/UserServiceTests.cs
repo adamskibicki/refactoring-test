@@ -70,6 +70,7 @@ public class UserServiceTests
         new object[] { "VeryImportantClient", "", "Doe", 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(2023, 1, 1) },
         new object[] { "VeryImportantClient", null, "Doe", 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(2023, 1, 1) },
         new object[] { "VeryImportantClient", "John", "", 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(2023, 1, 1) },
+        new object[] { "VeryImportantClient", "John", "Doe", 0, "john@tt", new DateTime(1997, 9, 12), new DateTime(2023, 1, 1) },
         new object[] { "VeryImportantClient", "John", null, 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(2023, 1, 1) },
         new object[] { "VeryImportantClient", "John", "Doe", 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(1997 + 21, 9 - 1, 12) },
         new object[] { "VeryImportantClient", "John", "Doe", 0, "john@t.t", new DateTime(1997, 9, 12), new DateTime(1997 + 21, 9, 12 - 1) },
