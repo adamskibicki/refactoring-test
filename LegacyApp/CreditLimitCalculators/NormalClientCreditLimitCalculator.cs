@@ -1,6 +1,7 @@
 ﻿using System;
+using LegacyApp.Services;
 
-namespace LegacyApp
+namespace LegacyApp.CreditLimitCalculators
 {
     public class NormalClientCreditLimitCalculator : ICreditLimitCalculator
     {

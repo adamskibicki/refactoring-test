@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LegacyApp
+namespace LegacyApp.CreditLimitCalculators
 {
     public interface ICreditLimitCalculator
     {

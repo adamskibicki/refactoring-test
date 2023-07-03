@@ -1,4 +1,6 @@
-﻿namespace LegacyApp.Repositories
+﻿using LegacyApp.Models;
+
+namespace LegacyApp.Repositories
 {
     public interface IClientRepository
     {

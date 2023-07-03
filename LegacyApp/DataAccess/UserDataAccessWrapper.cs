@@ -1,4 +1,6 @@
-﻿namespace LegacyApp
+﻿using LegacyApp.Models;
+
+namespace LegacyApp.DataAccess
 {
     public class UserDataAccessWrapper : IUserDataAccess
     {

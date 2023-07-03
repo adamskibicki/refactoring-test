@@ -1,9 +1,13 @@
 ﻿using System;
+using LegacyApp.CreditLimitCalculators;
+using LegacyApp.DataAccess;
+using LegacyApp.Models;
 using LegacyApp.Repositories;
+using LegacyApp.Services;
 
 namespace LegacyApp
 {
-    public class UserService : IUserService
+    public class UserService
     {
         private readonly IClientRepository _clientRepository;
         private readonly IUserDataAccess _userDataAccess;

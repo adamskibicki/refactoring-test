@@ -1,12 +1,16 @@
 using FluentAssertions;
+using LegacyApp.CreditLimitCalculators;
+using LegacyApp.DataAccess;
+using LegacyApp.Models;
 using LegacyApp.Repositories;
+using LegacyApp.Services;
 using Moq;
 
 namespace LegacyApp.Tests;
 
 public class UserServiceTests
 {
-    private readonly IUserService _userService;
+    private readonly UserService _userService;
     private readonly Mock<IClientRepository> _clientRepository;
     private readonly Mock<IUserCreditService> _userCreditService;
     private readonly Mock<IUserDataAccess> _userDataAccess;

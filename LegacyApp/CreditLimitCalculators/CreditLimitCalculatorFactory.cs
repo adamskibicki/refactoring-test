@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using LegacyApp.Services;
 
-namespace LegacyApp
+namespace LegacyApp.CreditLimitCalculators
 {
     public class CreditLimitCalculatorFactory : ICreditLimitCalculatorFactory
     {
         private readonly IDictionary<string, ICreditLimitCalculator> _calculatorsDictionary;
-        private readonly IUserCreditService _userCreditService;
 
         public CreditLimitCalculatorFactory(IUserCreditService userCreditService)
         {
-            _userCreditService = userCreditService;
-
             var calculatorInterfaceType = typeof(ICreditLimitCalculator);
             var calculatorTypes = calculatorInterfaceType.Assembly.GetTypes()
                 .Where(x =>
-                    x.IsAssignableFrom(calculatorInterfaceType) && x.IsAbstract == false && x.IsInterface == false)
+                    calculatorInterfaceType.IsAssignableFrom(x) && x.IsAbstract == false && x.IsInterface == false)
                 .ToArray();
-
+            
             var instances = calculatorTypes.Select(x =>
-                (ICreditLimitCalculator)Activator.CreateInstance(x, BindingFlags.Public | BindingFlags.Instance, null,
-                    _userCreditService));
+                (ICreditLimitCalculator)Activator.CreateInstance(x, args: userCreditService));
 
             _calculatorsDictionary = instances.ToDictionary(x => x.ClientName, x => x);
         }
